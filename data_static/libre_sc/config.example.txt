@@ -1,5 +1,28 @@
 "config"
 {
-	// What your currency will be referred to as
-	"display"	"Social Credits"
+	// What your currency will be referred to as, it's best to keep it singular
+	"display"	"Social Credit"
+
+
+
+	"commands"
+	{
+		// Values in here control how chat commands are registered and understood.
+		// Note that values will be converted to lowercase and trimmed.
+		//
+		// Do NOT remove the key for a command to disable it, all of the keys in here need to remain or else you may have problems.
+		// To disable a command, set its VALUE to an empty string (""), example:
+		//
+		// "pay"		""
+		//
+		// The prefix value is what will be need to be at the beginning of the string for the command to be recognized, so if you have:
+		//
+		// "prefix"		"!"
+		//
+		// Then in order to pay someone, you need to type "!pay" into chat. The prefix can be any length you want.
+		// If it is set to an empty string (""), then all commands are disabled.
+		"prefix"		"!"
+
+		"pay"			"pay"
+	}
 }
