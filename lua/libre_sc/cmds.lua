@@ -106,3 +106,4 @@ end)
 
 -- File time!
 include("commands/pay.lua")
+include("commands/bal.lua")

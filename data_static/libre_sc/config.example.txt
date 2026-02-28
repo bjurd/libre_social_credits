@@ -24,5 +24,7 @@
 		"prefix"		"!"
 
 		"pay"			"pay"
+
+		"bal"			"bal"
 	}
 }
