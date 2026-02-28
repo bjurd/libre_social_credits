@@ -9,6 +9,10 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	end
 	--- @cast Attacker Player
 	--- @cast Victim Player
+	if Attacker == Victim then
+		-- Don't kill yourself, loser
+		return
+	end
 
 	-- TODO: Kill types that award different amounts
 	Attacker:AddSocialCredits(10)
