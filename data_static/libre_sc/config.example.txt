@@ -1,0 +1,5 @@
+"config"
+{
+	// What your currency will be referred to as
+	"display"	"Social Credits"
+}
