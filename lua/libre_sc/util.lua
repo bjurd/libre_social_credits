@@ -19,7 +19,7 @@ function LibreSC:FindPlayer(Data)
 	for _, Player in player.Iterator() do
 		local Name = string.Trim(string.lower(Player:Nick()))
 
-		if string.find(Converted, Name) then
+		if string.find(Name, Converted) then
 			return Player
 		end
 	end
