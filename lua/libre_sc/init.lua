@@ -88,5 +88,6 @@ function LibreSC.InitPostEntity()
 	LibreSC:LoadConfig()
 
 	include("libre_sc/cmds.lua")
+	include("libre_sc/earn.lua")
 end
 hook.Add("InitPostEntity", "LibreSocialCredits", LibreSC.InitPostEntity)
