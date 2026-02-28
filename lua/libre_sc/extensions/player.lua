@@ -1,3 +1,9 @@
+--- @class Player
+--- @field GetSocialCredits fun(self: Player): number
+--- @field SetSocialCredits fun(self: Player, Credits: number)
+--- @field AddSocialCredits fun(self: Player, Amount: number)
+--- @field SubtractSocialCredits fun(self: Player, Amount: number)
+
 local PLAYER = FindMetaTable("Player")
 
 if not istable(PLAYER) then
