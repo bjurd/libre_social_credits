@@ -1,3 +1,9 @@
+--- @param Amount number|nil
+--- @return string
+function LibreSC:GetDisplayName(Amount)
+	return LibreSC:Pluralize(LibreSC.Config.display, Amount or 1)
+end
+
 --- @param Data string Name, SteamID, SteamID64
 --- @return Player|nil
 function LibreSC:FindPlayer(Data)

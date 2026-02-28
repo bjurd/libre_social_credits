@@ -12,5 +12,5 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 
 	-- TODO: Kill types that award different amounts
 	Attacker:AddSocialCredits(10)
-	Attacker:ChatPrint("You got a kill! +10 " .. LibreSC:Pluralize(LibreSC.Config.display, 10))
+	Attacker:ChatPrint("You got a kill! +10 " .. LibreSC:GetDisplayName(10))
 end)

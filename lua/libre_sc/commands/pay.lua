@@ -31,7 +31,7 @@ LibreSC:RegisterCommand("pay", function(self, Player, Arguments)
 	end
 
 	if Amount > Player:GetSocialCredits() then
-		Player:ChatPrint("Invalid amount! You don't have enough " .. LibreSC:Pluralize(LibreSC.Config.display, 2))
+		Player:ChatPrint("Invalid amount! You don't have enough " .. LibreSC:GetDisplayName(Amount))
 		return
 	end
 
@@ -39,7 +39,7 @@ LibreSC:RegisterCommand("pay", function(self, Player, Arguments)
 	LibreSC:RemoveCreditsFor(TargetData, Amount)
 
 	if Receiver then
-		Receiver:ChatPrint(string.format("%s has sent you %d %s!", Player:Nick(), Amount, LibreSC:Pluralize(LibreSC.Config.display, Amount)))
+		Receiver:ChatPrint(string.format("%s has sent you %d %s!", Player:Nick(), Amount, LibreSC:GetDisplayName(Amount)))
 	end
-	Player:ChatPrint(string.format("Sent %d %s to %s!", Amount, LibreSC:Pluralize(LibreSC.Config.display, Amount), TargetData))
+	Player:ChatPrint(string.format("Sent %d %s to %s!", Amount, LibreSC:GetDisplayName(Amount), TargetData))
 end)
