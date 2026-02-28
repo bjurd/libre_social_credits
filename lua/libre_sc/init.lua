@@ -1,8 +1,13 @@
 --- @class LibreSCConfig
 --- @field display string
+--- @field commands LibreSCConfig_Commands
+
+--- @class LibreSCConfig_Commands
+--- @field prefix string
 
 --- @class LibreSocialCredits
 --- @field Config LibreSCConfig
+--- @field Commands LibreSCCommand[]
 LibreSC = LibreSC or {}
 
 
@@ -22,7 +27,7 @@ end
 --- @param SteamID string
 --- @return number
 function LibreSC:GetCreditsFor(SteamID)
-	LibreSC:EnsureDatabase()
+	self:EnsureDatabase()
 
 	local CreditsStr = sql.QueryValue(string.format([[
 		SELECT `Amount` FROM `libre_social_credits` WHERE `SteamID` = '%s';
@@ -35,7 +40,7 @@ end
 --- @param SteamID string
 --- @param Credits number
 function LibreSC:SetCreditsFor(SteamID, Credits)
-	LibreSC:EnsureDatabase()
+	self:EnsureDatabase()
 
 	Credits = tonumber(Credits) or 0
 
@@ -47,19 +52,19 @@ end
 --- @param SteamID string
 --- @param Amount number
 function LibreSC:AddCreditsFor(SteamID, Amount)
-	local Current = LibreSC:GetCreditsFor(SteamID)
+	local Current = self:GetCreditsFor(SteamID)
 	local New = Current + Amount
 
-	LibreSC:SetCreditsFor(SteamID, New)
+	self:SetCreditsFor(SteamID, New)
 end
 
 --- @param SteamID string
 --- @param Amount number
 function LibreSC:RemoveCreditsFor(SteamID, Amount)
-	local Current = LibreSC:GetCreditsFor(SteamID)
+	local Current = self:GetCreditsFor(SteamID)
 	local New = Current - Amount
 
-	LibreSC:SetCreditsFor(SteamID, New)
+	self:SetCreditsFor(SteamID, New)
 end
 
 function LibreSC:LoadConfig()
@@ -71,14 +76,17 @@ function LibreSC:LoadConfig()
 	end
 
 	local Config = util.KeyValuesToTable(ConfigData, false, true)
-	LibreSC.Config = Config
+	self.Config = Config
 end
 
 
 
 function LibreSC.InitPostEntity()
+	include("libre_sc/util.lua")
 	include("libre_sc/extensions/player.lua")
 
 	LibreSC:LoadConfig()
+
+	include("libre_sc/cmds.lua")
 end
 hook.Add("InitPostEntity", "LibreSocialCredits", LibreSC.InitPostEntity)
