@@ -27,6 +27,25 @@ function LibreSC:FindPlayer(Data)
 	return nil
 end
 
+--- @param Data string
+--- @return string|nil
+function LibreSC:FindSteamID(Data)
+	if util.SteamIDTo64(Data) ~= "0" then
+		return Data
+	end
+
+	local Player = self:FindPlayer(Data)
+
+	if Player then
+		return Player:SteamID()
+	end
+	if util.SteamIDFrom64(Data) ~= "STEAM_0:0:0" then
+		return util.SteamIDFrom64(Data)
+	end
+
+	return nil
+end
+
 --- @param String string
 --- @param Amount number
 --- @param Suffix string|nil

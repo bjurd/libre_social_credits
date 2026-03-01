@@ -8,25 +8,14 @@ LibreSC:RegisterCommand("bal", function(self, Player, Arguments)
 		return
 	end
 
-	local Found = LibreSC:FindPlayer(TargetData)
-	local Receiver = (Found and Found:IsValid()) and Found or false
+	local TargetID = LibreSC:FindSteamID(TargetData)
 
-	if Receiver then
-		TargetData = Receiver:SteamID()
-		goto Read
-	else
-		if util.SteamIDTo64(TargetData) ~= "0" then
-			goto Read
-		end
-	end
-
-	if true then
+	if not TargetID then
 		Player:ChatPrint("Invalid target! You can use name, SteamID, or SteamID64.")
 		return
 	end
 
-	::Read::
-	local Amount = LibreSC:GetCreditsFor(TargetData)
+	local Amount = LibreSC:GetCreditsFor(TargetID)
 
-	Player:ChatPrint(string.format("%s has %d %s", TargetData, Amount, LibreSC:GetDisplayName(Amount)))
+	Player:ChatPrint(string.format("%s has %d %s", TargetID, Amount, LibreSC:GetDisplayName(Amount)))
 end)
