@@ -15,7 +15,7 @@ LibreSC:RegisterCommand("bal", function(self, Player, Arguments)
 		return
 	end
 
-	local Found = player.GetBySteamID(TargetID)
+	local Found = player.GetBySteamID(TargetID) --[[@as Player]] -- This is not the correct way to fix the LuaLS warning, but it's fine
 	local Amount = LibreSC:GetCreditsFor(TargetID)
 
 	Player:ChatPrint(string.format("%s has %d %s", (Found and Found:Nick() or TargetID), Amount, LibreSC:GetDisplayName(Amount)))
