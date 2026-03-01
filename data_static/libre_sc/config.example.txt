@@ -16,6 +16,10 @@
 		// Set to 0 or less to disable headshot bonuses.
 		"headshot_multiplier"	"1.5"
 
+		// How much players will lose every time they die.
+		// Set to 0 or less to disable death losses.
+		"death_value"			"10"
+
 		// How much players will earn on every initial spawn.
 		// A.K.A. how much every time they connect.
 		// Set to 0 or less to disable.
