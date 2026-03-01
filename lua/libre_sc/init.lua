@@ -10,6 +10,7 @@
 --- @class LibreSCConfig_Earn
 --- @field kill_value string
 --- @field headshot_multiplier string
+--- @field death_value string
 --- @field join_value string
 
 --- @class LibreSocialCredits

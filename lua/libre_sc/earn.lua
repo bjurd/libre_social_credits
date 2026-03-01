@@ -9,6 +9,13 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	end
 	--- @cast Attacker Player
 	--- @cast Victim Player
+
+	local DeathValue = tonumber(LibreSC.Config.earn.death_value) or 0
+	if DeathValue > 0 then
+		Victim:SubtractSocialCredits(DeathValue)
+		Victim:ChatPrint(string.format("You died! -%d %s", DeathValue, LibreSC:GetDisplayName(DeathValue)))
+	end
+
 	if Attacker == Victim then
 		-- Don't kill yourself, loser
 		return
