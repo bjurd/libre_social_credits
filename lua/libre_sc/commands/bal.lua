@@ -15,7 +15,8 @@ LibreSC:RegisterCommand("bal", function(self, Player, Arguments)
 		return
 	end
 
+	local Found = player.GetBySteamID(TargetID)
 	local Amount = LibreSC:GetCreditsFor(TargetID)
 
-	Player:ChatPrint(string.format("%s has %d %s", TargetID, Amount, LibreSC:GetDisplayName(Amount)))
+	Player:ChatPrint(string.format("%s has %d %s", (Found and Found:Nick() or TargetID), Amount, LibreSC:GetDisplayName(Amount)))
 end)

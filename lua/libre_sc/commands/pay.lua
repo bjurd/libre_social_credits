@@ -33,5 +33,5 @@ LibreSC:RegisterCommand("pay", function(self, Player, Arguments)
 	if Receiver then
 		Receiver:ChatPrint(string.format("%s has sent you %d %s!", Player:Nick(), Amount, LibreSC:GetDisplayName(Amount)))
 	end
-	Player:ChatPrint(string.format("Sent %d %s to %s!", Amount, LibreSC:GetDisplayName(Amount), TargetID))
+	Player:ChatPrint(string.format("Sent %d %s to %s!", Amount, LibreSC:GetDisplayName(Amount), (Receiver and Receiver:Nick() or TargetID)))
 end)
