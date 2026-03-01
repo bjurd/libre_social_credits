@@ -4,10 +4,9 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	local Inflictor = Entity(Data.entindex_inflictor --[[@as number]])
 	local Victim = Entity(Data.entindex_killed --[[@as number]])
 
-	if (not Attacker:IsValid() or not Attacker:IsPlayer()) or (not Victim:IsValid() or not Victim:IsPlayer()) then -- Player on player only
+	if not Victim:IsValid() or not Victim:IsPlayer() then
 		return
 	end
-	--- @cast Attacker Player
 	--- @cast Victim Player
 
 	local DeathValue = tonumber(LibreSC.Config.earn.death_value) or 0
@@ -15,6 +14,11 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 		Victim:SubtractSocialCredits(DeathValue)
 		Victim:ChatPrint(string.format("You died! -%d %s", DeathValue, LibreSC:GetDisplayName(DeathValue)))
 	end
+
+	if not Attacker:IsValid() or not Attacker:IsPlayer() then -- Player on player only
+		return
+	end
+	--- @cast Attacker Player
 
 	if Attacker == Victim then
 		-- Don't kill yourself, loser
