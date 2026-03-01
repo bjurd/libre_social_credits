@@ -1,8 +1,12 @@
 gameevent.Listen("entity_killed")
 hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
-	local Attacker = Entity(Data.entindex_attacker --[[@as number]])
-	local Inflictor = Entity(Data.entindex_inflictor --[[@as number]])
-	local Victim = Entity(Data.entindex_killed --[[@as number]])
+	local AttackerIndex = Data.entindex_attacker --[[@as number]] or 0
+	local InflictorIndex = Data.entindex_inflictor --[[@as number]] or 0
+	local VictimIndex = Data.entindex_killed --[[@as number]] or 0
+
+	local Attacker = Entity(AttackerIndex)
+	local Inflictor = Entity(InflictorIndex)
+	local Victim = Entity(VictimIndex)
 
 	if not Victim:IsValid() or not Victim:IsPlayer() then
 		return
