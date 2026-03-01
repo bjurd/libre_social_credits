@@ -49,7 +49,7 @@ function LibreSC:RegisterCommand(Name, Callback)
 	--- @type string|nil
 	local ConfigName = self.Config.commands[Name]
 
-	if not ConfigName then
+	if not ConfigName or string.len(ConfigName) <= 0 then
 		return
 	else
 		ConfigName = string.Trim(string.lower(ConfigName))
