@@ -32,7 +32,7 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 
 	local Amount = BaseValue
 
-	if Victim:LastHitGroup() == HITGROUP_HEAD then
+	if Inflictor:IsValid() and Inflictor:IsWeapon() and Victim:LastHitGroup() == HITGROUP_HEAD then
 		local HeadshotMultiplier = tonumber(LibreSC.Config.earn.headshot_multiplier) or 0
 
 		if HeadshotMultiplier > 0 then
