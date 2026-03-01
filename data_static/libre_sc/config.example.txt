@@ -1,9 +1,21 @@
 "config"
 {
-	// What your currency will be referred to as, it's best to keep it singular
-	"display"	"Social Credit"
+	// What your currency will be referred to as. It's best to keep it singular.
+	"display"		"Social Credit"
 
+	"earn"
+	{
+		// Strings in here must be valid numbers. Since currency is stored as whole numbers, it is only safe to use decimals
+		// where you can garuntee a whole number will be produced, such as with multipliers.
 
+		// How much players will earn per-player they kill.
+		// Set to 0 or less to disable kill rewards.
+		"kill_value"			"10"
+
+		// How much extra players will earn for getting headshots.
+		// Set to 0 or less to disable headshot bonuses.
+		"headshot_multiplier"	"1.5"
+	}
 
 	"commands"
 	{

@@ -14,7 +14,21 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 		return
 	end
 
-	-- TODO: Kill types that award different amounts
-	Attacker:AddSocialCredits(10)
-	Attacker:ChatPrint("You got a kill! +10 " .. LibreSC:GetDisplayName(10))
+	local BaseValue = tonumber(LibreSC.Config.earn.kill_value) or 0
+	if BaseValue <= 0 then
+		return
+	end
+
+	local Amount = BaseValue
+
+	if Victim:LastHitGroup() == HITGROUP_HEAD then
+		local HeadshotMultiplier = tonumber(LibreSC.Config.earn.headshot_multiplier) or 0
+
+		if HeadshotMultiplier > 0 then
+			Amount = BaseValue * HeadshotMultiplier
+		end
+	end
+
+	Attacker:AddSocialCredits(Amount)
+	Attacker:ChatPrint(string.format("You got a kill! +%d %s", Amount, LibreSC:GetDisplayName(Amount)))
 end)

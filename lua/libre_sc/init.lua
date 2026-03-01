@@ -1,9 +1,15 @@
 --- @class LibreSCConfig
 --- @field display string
 --- @field commands LibreSCConfig_Commands
+--- @field earn LibreSCConfig_Earn
 
 --- @class LibreSCConfig_Commands
 --- @field prefix string
+--- The rest don't matter
+
+--- @class LibreSCConfig_Earn
+--- @field kill_value string
+--- @field headshot_multiplier string
 
 --- @class LibreSocialCredits
 --- @field Config LibreSCConfig
