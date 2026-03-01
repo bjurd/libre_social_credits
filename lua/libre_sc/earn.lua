@@ -38,13 +38,11 @@ hook.Add("player_activate", "LibreSocialCredits:Earn", function(Data)
 	local Player = Player(Data.userid --[[@as number]])
 
 	if not Player:IsValid() then
-		print("bad player ", Data.userid)
 		return
 	end
 
 	local Value = tonumber(LibreSC.Config.earn.join_value) or 0
 	if Value <= 0 then
-		print("bad value ", Value)
 		return
 	end
 
