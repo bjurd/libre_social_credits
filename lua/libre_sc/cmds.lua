@@ -18,7 +18,7 @@ function LibreSC:FindCommand(Name)
 		-- Not exactly the most efficient lookup :P
 		local Command = self.Commands[i]
 
-		if Command.Name == Name then
+		if Command.DisplayName == Name then
 			return Command, i
 		end
 	end
