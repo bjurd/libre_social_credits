@@ -32,3 +32,22 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	Attacker:AddSocialCredits(Amount)
 	Attacker:ChatPrint(string.format("You got a kill! +%d %s", Amount, LibreSC:GetDisplayName(Amount)))
 end)
+
+gameevent.Listen("player_activate")
+hook.Add("player_activate", "LibreSocialCredits:Earn", function(Data)
+	local Player = Player(Data.userid --[[@as number]])
+
+	if not Player:IsValid() then
+		print("bad player ", Data.userid)
+		return
+	end
+
+	local Value = tonumber(LibreSC.Config.earn.join_value) or 0
+	if Value <= 0 then
+		print("bad value ", Value)
+		return
+	end
+
+	Player:AddSocialCredits(Value)
+	Player:ChatPrint(string.format("Thanks for joining! +%d %s", Value, LibreSC:GetDisplayName(Value)))
+end)

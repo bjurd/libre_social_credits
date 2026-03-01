@@ -15,6 +15,11 @@
 		// How much extra players will earn for getting headshots.
 		// Set to 0 or less to disable headshot bonuses.
 		"headshot_multiplier"	"1.5"
+
+		// How much players will earn on every initial spawn.
+		// A.K.A. how much every time they connect.
+		// Set to 0 or less to disable.
+		"join_value"			"5"
 	}
 
 	"commands"
