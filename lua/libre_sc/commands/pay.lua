@@ -36,7 +36,7 @@ LibreSC:RegisterCommand("pay", function(self, Player, Arguments)
 	end
 
 	LibreSC:AddCreditsFor(TargetData, Amount)
-	LibreSC:RemoveCreditsFor(TargetData, Amount)
+	LibreSC:RemoveCreditsFor(Player:SteamID(), Amount)
 
 	if Receiver then
 		Receiver:ChatPrint(string.format("%s has sent you %d %s!", Player:Nick(), Amount, LibreSC:GetDisplayName(Amount)))
