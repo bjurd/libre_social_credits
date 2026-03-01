@@ -47,5 +47,7 @@
 		"pay"			"pay"
 
 		"bal"			"bal"
+
+		"explode"		"explode"
 	}
 }

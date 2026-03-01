@@ -104,6 +104,9 @@ hook.Add("player_say", "LibreSocialCredits:Commands", function(Data)
 	LibreSC:RunCommand(Command, Player, Blocks)
 end)
 
+
+
 -- File time!
 include("commands/pay.lua")
 include("commands/bal.lua")
+include("commands/explode.lua")
