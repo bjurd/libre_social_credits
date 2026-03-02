@@ -49,5 +49,7 @@
 		"bal"			"bal"
 
 		"explode"		"explode"
+
+		"leaderboard"	"leaderboard"
 	}
 }
