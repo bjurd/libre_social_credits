@@ -32,6 +32,22 @@ function LibreSC:EnsureDatabase()
 	end
 end
 
+--- @return table
+function LibreSC:DumpDatabase()
+	self:EnsureDatabase()
+
+	local Data = sql.Query([[
+		SELECT * FROM `libre_social_credits`;
+	]])
+
+	if not Data then
+		return {}
+	end
+	--- @cast Data table
+
+	return Data
+end
+
 --- @param SteamID string
 --- @return number
 function LibreSC:GetCreditsFor(SteamID)
