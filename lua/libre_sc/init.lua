@@ -12,6 +12,7 @@
 --- @field reward_bot_kills string
 --- @field headshot_multiplier string
 --- @field death_value string
+--- @field suicide_multiplier string
 --- @field join_value string
 
 --- @class LibreSocialCredits

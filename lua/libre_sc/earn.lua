@@ -13,7 +13,15 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	end
 	--- @cast Victim Player
 
+	local IsSuicide = Attacker == Victim -- Don't kill yourself, loser
+
 	local DeathValue = tonumber(LibreSC.Config.earn.death_value) or 0
+	local SuicideMultiplier = tonumber(LibreSC.Config.earn.suicide_multiplier) or 0
+
+	if SuicideMultiplier > 0 then
+		DeathValue = DeathValue * SuicideMultiplier
+	end
+
 	if DeathValue > 0 then
 		Victim:SubtractSocialCredits(DeathValue)
 		Victim:ChatPrint(string.format("You died! -%d %s", DeathValue, LibreSC:GetDisplayName(DeathValue)))
@@ -24,8 +32,7 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	end
 	--- @cast Attacker Player
 
-	if Attacker == Victim then
-		-- Don't kill yourself, loser
+	if IsSuicide then
 		return
 	end
 
