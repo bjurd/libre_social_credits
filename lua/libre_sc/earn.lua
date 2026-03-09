@@ -29,6 +29,10 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 		return
 	end
 
+	if Victim:IsBot() and not tobool(LibreSC.Config.earn.reward_bot_kills) then
+		return
+	end
+
 	local BaseValue = tonumber(LibreSC.Config.earn.kill_value) or 0
 	if BaseValue <= 0 then
 		return

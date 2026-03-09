@@ -12,6 +12,10 @@
 		// Set to 0 or less to disable kill rewards.
 		"kill_value"			"10"
 
+		// Whether or not killing bots will award credits.
+		// Accepts "false", "true", "0", "1"
+		"reward_bot_kills"		"false"
+
 		// How much extra players will earn for getting headshots.
 		// Set to 0 or less to disable headshot bonuses.
 		"headshot_multiplier"	"1.5"

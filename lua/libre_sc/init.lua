@@ -9,6 +9,7 @@
 
 --- @class LibreSCConfig_Earn
 --- @field kill_value string
+--- @field reward_bot_kills string
 --- @field headshot_multiplier string
 --- @field death_value string
 --- @field join_value string
