@@ -18,7 +18,7 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	local DeathValue = tonumber(LibreSC.Config.earn.death_value) or 0
 	local SuicideMultiplier = tonumber(LibreSC.Config.earn.suicide_multiplier) or 0
 
-	if SuicideMultiplier > 0 then
+	if IsSuicide and SuicideMultiplier > 0 then
 		DeathValue = DeathValue * SuicideMultiplier
 	end
 
