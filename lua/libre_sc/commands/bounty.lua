@@ -1,3 +1,6 @@
+--- @class Player
+--- @field buildmode boolean|nil
+
 LibreSC:RegisterCommand("bounty", function(self, Player, Arguments)
 	local TargetData = Arguments[1]
 	local Amount = tonumber(Arguments[2])
@@ -26,6 +29,12 @@ LibreSC:RegisterCommand("bounty", function(self, Player, Arguments)
 
 	if Amount > Player:GetSocialCredits() then
 		Player:ChatPrint("Invalid amount! You don't have enough " .. LibreSC:GetDisplayName(Amount))
+		return
+	end
+
+	-- Some addon support...
+	if Found:HasGodMode() or Found.buildmode then
+		Player:ChatPrint("You can't place a hit on protected players!")
 		return
 	end
 
