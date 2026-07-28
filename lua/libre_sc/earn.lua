@@ -36,6 +36,17 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 		return
 	end
 
+	if Victim:GetCreditBounty() > 0 then
+		local Bounty = Victim:GetCreditBounty()
+		Victim:SetCreditBounty(0)
+
+		Attacker:AddSocialCredits(Bounty)
+
+		LibreSC:ChatBroadcast(string.format("%s has claimed the %d %s bounty on %s!", Attacker:Nick(), Bounty, LibreSC:GetDisplayName(Bounty), Victim:Nick()))
+
+		return
+	end
+
 	if Victim:IsBot() and not tobool(LibreSC.Config.earn.reward_bot_kills) then
 		return
 	end

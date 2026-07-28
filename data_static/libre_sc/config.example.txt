@@ -65,5 +65,7 @@
 		"explode"		"explode"
 
 		"leaderboard"	"leaderboard"
+
+		"bounty"		"bounty"
 	}
 }

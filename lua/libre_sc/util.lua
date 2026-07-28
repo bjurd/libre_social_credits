@@ -61,3 +61,10 @@ function LibreSC:Pluralize(String, Amount, Suffix)
 		return String .. Suffix
 	end
 end
+
+--- @param String string
+function LibreSC:ChatBroadcast(String)
+	for _, Player in player.Iterator() do
+		Player:ChatPrint(String)
+	end
+end
