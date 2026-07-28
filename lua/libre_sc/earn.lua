@@ -36,7 +36,7 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 		return
 	end
 
-	if Victim:GetCreditBounty() > 0 then
+	if Victim:GetCreditBounty() > 0 and not Victim.m_bDontClaimBounty then
 		local Bounty = Victim:GetCreditBounty()
 		Victim:SetCreditBounty(0)
 

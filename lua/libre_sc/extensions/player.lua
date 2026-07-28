@@ -1,6 +1,7 @@
 --- @class Player
 --- @field m_iSocialCreditBounty number
 --- @field m_strSocialCreditBountyPlayer string
+--- @field m_bDontClaimBounty boolean
 --- @field GetSocialCredits fun(self: Player): number
 --- @field SetSocialCredits fun(self: Player, Credits: number)
 --- @field AddSocialCredits fun(self: Player, Amount: number)
@@ -47,6 +48,7 @@ end
 --- @param Placer Player|nil
 function PLAYER:SetCreditBounty(Bounty, Placer)
 	self.m_iSocialCreditBounty = Bounty
+	self.m_bDontClaimBounty = false
 
 	if Placer then
 		self.m_strSocialCreditBountyPlayer = Placer:SteamID()

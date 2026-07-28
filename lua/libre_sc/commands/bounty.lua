@@ -51,6 +51,10 @@ LibreSC:RegisterCommand("bounty", function(self, Player, Arguments)
 	LibreSC:ChatBroadcast(string.format("A bounty has been placed for %d %s on %s!", Amount, LibreSC:GetDisplayName(Amount), Found:Nick()))
 end)
 
+hook.Add("PlayerSpawn", "LibreSocialCredits:BountyReset", function(Player)
+	Player.m_bDontClaimBounty = false
+end)
+
 hook.Add("PlayerDisconnected", "LibreSocialCredits:BountyReset", function(Player)
 	if Player:GetCreditBounty() > 0 then
 		local Bounty = Player:GetCreditBounty()
