@@ -13,8 +13,10 @@ LibreSC:RegisterCommand("explode", function(self, Player, Arguments)
 		return
 	end
 
-	if Player:GetSocialCredits() < 1000 then
-		Player:ChatPrint(string.format("You need at least 1000 %s to run this command!", LibreSC:GetDisplayName(1000)))
+	local Cost = tonumber(LibreSC.Config.cost.explode) or 0
+
+	if Player:GetSocialCredits() < Cost then
+		Player:ChatPrint(string.format("You need at least %d %s to run this command!", Cost, LibreSC:GetDisplayName(Cost)))
 		return
 	end
 
@@ -23,7 +25,7 @@ LibreSC:RegisterCommand("explode", function(self, Player, Arguments)
 		return
 	end
 
-	Player:SubtractSocialCredits(1000)
+	Player:SubtractSocialCredits(Cost)
 
 	local Origin = Found:GetPos()
 

@@ -34,6 +34,12 @@
 		"join_value"			"5"
 	}
 
+	"cost"
+	{
+		// How much it costs to use the "explode" command.
+		"explode"				"1000"
+	}
+
 	"commands"
 	{
 		// Values in here control how chat commands are registered and understood.

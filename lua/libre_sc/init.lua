@@ -2,6 +2,7 @@
 --- @field display string
 --- @field commands LibreSCConfig_Commands
 --- @field earn LibreSCConfig_Earn
+--- @field cost LibreSCConfig_Cost
 
 --- @class LibreSCConfig_Commands
 --- @field prefix string
@@ -14,6 +15,9 @@
 --- @field death_value string
 --- @field suicide_multiplier string
 --- @field join_value string
+
+--- @class LibreSCConfig_Cost
+--- @field explode string
 
 --- @class LibreSocialCredits
 --- @field Config LibreSCConfig
