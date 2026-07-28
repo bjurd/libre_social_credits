@@ -1,11 +1,12 @@
 --- @class Player
 --- @field m_iSocialCreditBounty number
+--- @field m_strSocialCreditBountyPlayer string
 --- @field GetSocialCredits fun(self: Player): number
 --- @field SetSocialCredits fun(self: Player, Credits: number)
 --- @field AddSocialCredits fun(self: Player, Amount: number)
 --- @field SubtractSocialCredits fun(self: Player, Amount: number)
 --- @field GetCreditBounty fun(self: Player): number
---- @field SetCreditBounty fun(self: Player, Bounty: number)
+--- @field SetCreditBounty fun(self: Player, Bounty: number, Placer: Player|nil)
 
 local PLAYER = FindMetaTable("Player")
 
@@ -43,6 +44,11 @@ function PLAYER:GetCreditBounty()
 end
 
 --- @param Bounty number
-function PLAYER:SetCreditBounty(Bounty)
+--- @param Placer Player|nil
+function PLAYER:SetCreditBounty(Bounty, Placer)
 	self.m_iSocialCreditBounty = Bounty
+
+	if Placer then
+		self.m_strSocialCreditBountyPlayer = Placer:SteamID()
+	end
 end
