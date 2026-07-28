@@ -27,6 +27,9 @@ LibreSC:RegisterCommand("explode", function(self, Player, Arguments)
 
 	Player:SubtractSocialCredits(Cost)
 
+	local Bounty = Found:GetCreditBounty()
+	Found:SetCreditBounty(0)
+
 	local Origin = Found:GetPos()
 
 	local Damage = DamageInfo()
@@ -54,4 +57,6 @@ LibreSC:RegisterCommand("explode", function(self, Player, Arguments)
 	Effect:SetNormal(vector_up)
 	Effect:SetRadius(0)
 	util.Effect("Explosion", Effect, true, true)
+
+	Found:SetCreditBounty(Bounty)
 end)
