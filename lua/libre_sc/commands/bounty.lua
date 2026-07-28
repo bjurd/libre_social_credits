@@ -32,6 +32,13 @@ LibreSC:RegisterCommand("bounty", function(self, Player, Arguments)
 		return
 	end
 
+	if Found:GetCreditBounty() > 0 then
+		local Bounty = Found:GetCreditBounty()
+		Player:ChatPrint(string.format("%s already has a bounty of %d %s", Found:Nick(), Bounty, LibreSC:GetDisplayName(Bounty)))
+
+		return
+	end
+
 	-- Some addon support...
 	if Found:HasGodMode() or Found.buildmode then
 		Player:ChatPrint("You can't place a hit on protected players!")
