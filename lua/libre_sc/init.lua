@@ -73,6 +73,7 @@ function LibreSC:SetCreditsFor(SteamID, Credits)
 	self:EnsureDatabase()
 
 	Credits = tonumber(Credits) or 0
+	Credits = math.max(Credits, 0)
 
 	sql.Query(string.format([[
 		INSERT OR REPLACE INTO `libre_social_credits` ( `SteamID`, `Amount` ) VALUES ( '%s', %d );
