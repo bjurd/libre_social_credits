@@ -86,3 +86,30 @@ hook.Add("player_activate", "LibreSocialCredits:Earn", function(Data)
 	Player:AddSocialCredits(Value)
 	Player:ChatPrint(string.format("Thanks for joining! +%d %s", Value, LibreSC:GetDisplayName(Value)))
 end)
+
+gameevent.Listen("player_say")
+hook.Add("player_say", "LibreSocialCredits:Earn", function(Data)
+	local Player = Player(Data.userid --[[@as number]])
+	if not Player:IsValid() then
+		return
+	end
+
+	local Text = Data.text --[[@as string]]
+	local Prefix = LibreSC:GetCommandPrefix()
+
+	if string.StartsWith(Text, Prefix) then
+		return
+	end
+
+	if Player.m_strLastSocialCreditMessage == Text then
+		-- World's best anti-spam
+		return
+	end
+	Player.m_strLastSocialCreditMessage = Text
+
+	local Value = tonumber(LibreSC.Config.earn.speak_value) or 0
+
+	if Value > 0 then
+		Player:AddSocialCredits(Value)
+	end
+end)

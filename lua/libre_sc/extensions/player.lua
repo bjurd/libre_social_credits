@@ -2,6 +2,7 @@
 --- @field m_iSocialCreditBounty number
 --- @field m_strSocialCreditBountyPlayer string
 --- @field m_bDontClaimBounty boolean
+--- @field m_strLastSocialCreditMessage string|nil
 --- @field GetSocialCredits fun(self: Player): number
 --- @field SetSocialCredits fun(self: Player, Credits: number)
 --- @field AddSocialCredits fun(self: Player, Amount: number)

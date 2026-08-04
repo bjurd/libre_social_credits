@@ -15,6 +15,7 @@
 --- @field death_value string
 --- @field suicide_multiplier string
 --- @field join_value string
+--- @field speak_value string
 
 --- @class LibreSCConfig_Cost
 --- @field explode string

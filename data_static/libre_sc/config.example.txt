@@ -32,6 +32,10 @@
 		// A.K.A. how much every time they connect.
 		// Set to 0 or less to disable.
 		"join_value"			"5"
+
+		// How much players will earn for every chat message.
+		// Set to 0 or less to disable.
+		"speak_value"			"1"
 	}
 
 	"cost"
