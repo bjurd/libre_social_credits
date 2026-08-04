@@ -1,4 +1,5 @@
 --- @class Player
+--- @field jail table|nil ULX Jail
 --- @field m_iSocialCreditBounty number
 --- @field m_strSocialCreditBountyPlayer string
 --- @field m_bDontClaimBounty boolean

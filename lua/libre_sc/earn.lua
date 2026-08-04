@@ -13,6 +13,10 @@ hook.Add("entity_killed", "LibreSocialCredits:Earn", function(Data)
 	end
 	--- @cast Victim Player
 
+	if Victim.jail then
+		return
+	end
+
 	local IsSuicide = Attacker == Victim -- Don't kill yourself, loser
 
 	local DeathValue = tonumber(LibreSC.Config.earn.death_value) or 0
